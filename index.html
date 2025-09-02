@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <dialog id="gameStartDialog">
+        <h2>Welcome to Tic-Tac-Toe!</h2>
+        <p>Click "Start Game" to begin playing.</p>
+        <label for="player1NameInput">Player 1 Name:</label>
+        <input type="text" id="player1NameInput" name="username" value="Player X" placeholder="Player 1">
+        <label for="player2NameInput">Player 2 Name:</label>
+        <input type="text" id="player2NameInput" name="username" value="Player O" placeholder="Player 2">
+        <button id="closeDialogBtn">Start Game</button>
+    </dialog>
+
+    <h1>Tic-Tac-Toe</h1>
+    <div id="playerScoreContainer">
+        <h2 id="player1">Player X:</h2>
+        <h2 id="player2">Player O:</h2>
+    </div>
+    <div id="boardContainer">
+        <div class="cell one"></div>
+        <div class="cell two"></div>
+        <div class="cell three"></div>
+        <div class="cell four"></div>
+        <div class="cell five"></div>
+        <div class="cell six"></div>
+        <div class="cell seven"></div>
+        <div class="cell eight"></div>
+        <div class="cell nine"></div>
+    </div>
+    <button id="resetBtn">Reset Game</button>
+</body>
+
+</html>
