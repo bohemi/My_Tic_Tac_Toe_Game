@@ -86,10 +86,14 @@ function resetBoard() {
 //     console.log("Board Reset");
 // }
 function gameInitialSetup() {
+    document.getElementById("playerScoreContainer").style.display = "none";
+    document.getElementById("boardContainer").style.display = "none";
+    document.getElementById("resetBtn").style.display = "none";
+    // will be reset from the resetButton
     // filling the board with div cells which converted into an array.
     // We add buttonEventListener to each cell, to identify which cell was clicked.
     gameBoard.board = cells.slice();
-    setPlayerNamesDialog();
+    dialogBoxHandler();
     for (const element of cells) {
         // No need to call the remove line below since this functionis being only called at the startup and
         // later this logic is being handle in the reset function. but just in case as a sadety feature it
@@ -98,6 +102,9 @@ function gameInitialSetup() {
         element.removeEventListener("click", cellClickHandler);
         element.addEventListener("click", cellClickHandler, { once: true });
     }
+    document.getElementById("resetBtn").addEventListener("click", ()=>{
+        resetGame(playerOne, playerTwo);
+    })
 }
 function cellClickHandler(event) {
     const cell = event.target;
@@ -124,7 +131,7 @@ function drawOnCell(cell, playerMarker) {
             "url(https://cdn-icons-png.flaticon.com/128/3524/3524377.png)";
     }
 }
-function setPlayerNamesDialog() {
+function dialogBoxHandler() {
     const dialog = document.getElementById("gameStartDialog");
     const closeDialogBtn = document.getElementById("closeDialogBtn");
     const player1NameInput = document.getElementById("player1NameInput");
@@ -138,6 +145,9 @@ function setPlayerNamesDialog() {
         document.getElementById("player2").innerHTML = `${player2NameInput.value}'s Score:`;
         dialog.style.display = "none";
         dialog.close();
+        document.getElementById("playerScoreContainer").style.display = "flex";
+        document.getElementById("boardContainer").style.display = "grid";
+        document.getElementById("resetBtn").style.display = "block";
     });
 }
 function updateScore(player) {
@@ -149,4 +159,13 @@ function updateScore(player) {
         playerTwo.score++;
         document.getElementById("player2").innerHTML = `${player2NameInput.value}'s Score:${playerTwo.score}`;
     }
+}
+function resetGame(player1, player2){
+    player1.score = 0;
+    player2.score = 0;
+    resetBoard();
+    document.getElementById("player1").innerHTML = `${player1NameInput.value}'s Score:${playerOne.score}`;
+    document.getElementById("player2").innerHTML = `${player2NameInput.value}'s Score:${playerTwo.score}`;
+    element.removeEventListener("click", cellClickHandler);
+    element.addEventListener("click", cellClickHandler, { once: true });
 }
